@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="Scripts/javascript1.js"></script>
+    <title>Days of the Week</title>
+       
 </head>
 <body>
-
+    <script>
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var table = "<div class='tableRow'>";
+        for (var i = 0; i < days.length; i++) {
+            table += "<div class='tableColumn'>" + days[i] + "</div>";
+        }
+        table += "</div>";
+        document.write(table);
+    </script>
 </body>
 </html>
