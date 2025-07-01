@@ -1,0 +1,88 @@
+body {
+	background-color: rgb(0, 195, 255);
+	font-family: sans-serif;
+}
+h1 {
+	color: black;
+}
+h2 {
+	color: rgb(255, 255, 255);
+}
+th {
+	text-align: left;
+}
+img {
+	margin: 10px;
+	margin-right: 10px;
+	border: 5px solid white
+}
+#first-para {
+	color: rgb(0, 0, 0);
+}
+#amazing {
+	font-family: cursive;
+	font-size: 1.2em;
+}
+#cub-picture {
+	margin-right: 20px;
+	float: left;
+	padding: 3px;
+	border: 4px;
+	border: 1px solid black;
+}
+.intro-para {
+	color: rgb(0, 0, 0);
+}
+.things-list {
+	font-style: italic;
+}
+.left-heading {
+	font-weight: bold;
+}
+.very-important {
+	color: red;
+	font-style: italic;
+}
+.very-interesting {
+	font-family: fantasy;
+}
+#ppl-vs-nppl {
+	width: 50%;
+	height: 150px;
+	overflow: visible; height: auto;
+	align-content: center;
+}
+#toc {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	background-color: #f1f1f1;
+	border-top: 1px solid #555;
+	border-left: 1px solid #555;
+	border-right: 1px solid #555;
+	position: fixed;
+	left:0;
+	height: 100%;
+	overflow: auto;
+}
+#toc a {
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+#toc li {
+	text-align: center;
+	border-bottom: 1px solid #555;
+}
+#toc a:hover {
+	background-color: #555;
+	color: white;
+}
+
+#main-page {
+	margin-left:200px;
+	padding-left:6px;
+}
+
