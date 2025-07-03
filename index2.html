@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Days of the Week</title>
-       
+    <meta charset="UTF-8">
+    <title>Multiplication Table</title>
 </head>
 <body>
-    <script>
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        var table = "<div class='tableRow'>";
-        for (var i = 0; i < days.length; i++) {
-            table += "<div class='tableColumn'>" + days[i] + "</div>";
+
+<input type="number" id="max" value="15"/>
+<button onclick="generateTable()">Create Table</button>
+
+<div id="multi"></div>
+
+<script>
+function generateTable() {
+    let max = document.getElementById("max").value;
+    let table = "<table border='1' cellpadding='5'>";
+
+    for (let row = 1; row <= max; row++) {
+        table += "<tr>";
+        for (let column = 1; column <= max; column++) {
+            table += "<td>" + (row * column) + "</td>";
         }
-        table += "</div>";
-        document.write(table);
-    </script>
+        table += "</tr>";
+    }
+
+    table += "</table>";
+    document.getElementById("multi").innerHTML = table;
+}
+</script>
+
 </body>
 </html>
