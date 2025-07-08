@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Example</title>
+</head>
+<body>
+    <h2>Menu Info from JSON</h2>
+    <p id="menuTitle"></p>
+    <ul id="menuItems"></ul>
+
+    <script>
+       
+        var myJSON = `{
+            "menu": {
+                "id": "file",
+                "value": "File",
+                "popup": {
+                    "menuitem": [
+                        {"value": "New", "onclick": "CreateNewDoc()"},
+                        {"value": "Open", "onclick": "OpenDoc()"},
+                        {"value": "Close", "onclick": "CloseDoc()"}
+                    ]
+                }
+            }
+        }`;
+
+        
+        var myVariable = JSON.parse(myJSON);
+
+        document.getElementById("menuTitle").innerText = "Menu: " + myVariable.menu.value;
+
+        var items = myVariable.menu.popup.menuitem;
+        var list = document.getElementById("menuItems");
+        items.forEach(function(item) {
+            var li = document.createElement("li");
+            li.innerText = item.value + " (onclick: " + item.onclick + ")";
+            list.appendChild(li);
+        });
+
+       
+        
+    </script>
+</body>
+</html>

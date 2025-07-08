@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<meta charset="utf-8">
+
+<title>Ginge's Cars</title>
+<link rel="stylesheet" href="css/car.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+  <script>
+    var myModule = angular.module("myModule", []);
+
+    myModule.controller("myController", function ($scope) {
+      $scope.message1 = "Cars In Stock";
+
+      $scope.cars = [
+        { make: "Ford", model: "Focus", colour: "Grey", plate: "67", image: "https://dotyumzonirqv.cloudfront.net/publish/wp-content/uploads/2021/03/Ford-Focus-stolen-from-Fresh-Motors-Mar-2021-300x300.jpg" },
+        { make: "Renault", model: "Clio", colour: "White", plate: "18", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRni2Y99fX78xHBW85Zjb_wufyOZ0G0fZbYTg&s" },
+        { make: "Vauxhall", model: "Astra", colour: "White", plate: "73", image: "https://www.twall.co.uk/assets/stock/usedcar/ND73PFJ/ND73PFJ517843.jpg" },
+        { make: "Mercedes", model: "A180", colour: "White", plate: "65", image: "https://images.clickdealer.co.uk/vehicles/4261/4261405/full/94404810.jpg" },
+        { make: "BMW", model: "420d", colour: "Black", plate: "15", image: "https://images.clickdealer.co.uk/vehicles/5333/5333662/full/123624922.jpg" },
+        { make: "Volkswagen", model: "Golf", colour: "Blue", plate: "05", image: "https://cdn.images.autoexposure.co.uk/AETA35833/AETV78003243_1e.jpg" },
+        { make: "Audi", model: "A5 Sportback", colour: "Black", plate: "19",  image: "https://images.clickdealer.co.uk/vehicles/6240/6240035/large1/147922485.jpg" }
+      ];
+
+      $scope.selectedCar = null;
+
+      $scope.selectCar = function(car) {
+        $scope.selectedCar = car;
+      };
+    });
+  </script>
+  
+</head>
+
+<body ng-app="myModule" ng-controller="myController">
+  <h1>{{ message1 }}</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>Plate</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="car in cars">
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.colour }}</td>
+        <td>{{ car.plate }}</td>
+        <td><button ng-click="selectCar(car)">Show Car</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="image-container" ng-if="selectedCar">
+    <h2>{{ selectedCar.make }} {{ selectedCar.model }}</h2>
+    <img ng-src="{{ selectedCar.image }}" alt="{{ selectedCar.make }} {{ selectedCar.model }}">
+  </div>
+</body>
+</html>

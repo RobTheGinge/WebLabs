@@ -1,0 +1,6 @@
+
+
+        /* Alternating background for odd rows */
+        #names div:nth-child(odd) {
+            background-color: #e0ffe0; /* light lime green */
+        }

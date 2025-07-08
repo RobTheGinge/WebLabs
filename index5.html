@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Age Check</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        function Register() {
+            var over18 = $("input[name='over18']:checked").val();
+            var over18 = $("#ov18:checked").val();
+
+            if (over18 == 'y') {
+                alert('Applicant is over 18');
+            } else if (over18 == 'n') {
+                alert('Applicant is under 18!');
+            }
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return Register()">
+        <label><input type="radio" name="over18" value="y" /> Over 18</label>
+        <label><input type="radio" name="over18" value="n" /> Under 18</label>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+

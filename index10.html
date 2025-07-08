@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Movie Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+        }
+
+        #searchBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 8px 8px 0;
+            transition: background-color 0.3s;
+        }
+
+        #searchBtn:hover {
+            background-color: #2980b9;
+        }
+
+        #results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .movie {
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .movie:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .movie img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .movie-title {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .movie-year {
+            color: #888;
+            font-size: 14px;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎬 Movie Search App</h1>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Enter a movie title..." />
+    <button id="searchBtn">Search</button>
+</div>
+
+<div id="results"></div>
+
+<script>
+    const apiKey = "ef5e4257";
+
+    $("#searchBtn").click(function () {
+        const query = $("#searchInput").val().trim();
+        if (query === "") {
+            alert("Please enter a movie title.");
+            return;
+        }
+
+        const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(query)}`;
+
+        $.get(url, function (data) {
+            $("#results").empty();
+
+            if (data.Response === "True") {
+                for (let film of data.Search) {
+                    const poster = film.Poster !== "N/A"
+                        ? `<a href="${film.Poster}" target="_blank"><img src="${film.Poster}" alt="${film.Title} Poster"></a>`
+                        : `<p>No poster available.</p>`;
+
+                    const movieCard = $(`
+                        <div class="movie">
+                            ${poster}
+                            <div class="movie-title">${film.Title}</div>
+                            <div class="movie-year">(${film.Year})</div>
+                        </div>
+                    `);
+
+                    $("#results").append(movieCard);
+                }
+            } else {
+                $("#results").html(`<p>No results found for "<strong>${query}</strong>".</p>`);
+            }
+        });
+    });
+
+    $("#searchInput").keypress(function (e) {
+        if (e.which === 13) {
+            $("#searchBtn").click();
+        }
+    });
+</script>
+
+</body>
+</html>

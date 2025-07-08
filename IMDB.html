@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Movie Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<script>
+    let myUrl = "https://www.omdbapi.com/?apikey=ef5e4257&s=Harry Potter";
+    $.get(myUrl, display);
+
+    function display(data) {
+        for (let film of data.Search) {
+            $(`<div>${film.Year} - ${film.Title}</div>`).appendTo($("body"));
+            if (film.Poster !== "N/A") {
+                $(`<img src='${film.Poster}' alt='${film.Title} poster' />`).appendTo($("body"));
+            }
+        }
+    }
+</script>
+</body>
+</html>

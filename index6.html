@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        #names div:nth-child(odd) {
+            background-color: #e0ffe0; 
+        }
+
+    </style>
+
+    <script>
+        function addName() {
+            var name = $("#nameInput").val();
+            $("#names").append(`<div>${name}</div>`);
+                return false;
+        }
+
+    </script>
+</head>
+<body>
+
+    <div id="names"></div>
+
+    <form onsubmit="return addName();">
+        <label for="nameInput">Enter a name:</label>
+        <input type="text" id="nameInput" />
+        <input type="submit" value="Add Name" />
+    </form>
+        
+</body>
+
+    
+
+
+    
+</body>
+</html>
